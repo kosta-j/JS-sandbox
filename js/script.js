@@ -328,3 +328,346 @@
 // }
 // // includes(['Земля', 'Марс', 'Венера', 'Юпитер', 'Сатурн'], 'Юпитер');
 // includes([1, 2, 3, 4, 5], 3);
+
+// module #3
+
+// Функция includes()
+// Задание
+// Напиши функцию includes(array, value), которая делает тоже самое,
+//что и метод массива массив.includes(значение) - проверяет,
+//есть ли в массиве array значение value, возвращая true если есть и false в противном случае.
+
+// При выполнении этой задачи в теле функции includes() нельзя использовать
+//метод массив.includes(значение).
+
+// function includes(array, value) {
+//   let isTrue = false;
+//   for (arrayItem of array) {
+//     // console.log(arrayItem);
+//     if (arrayItem === value) {
+//       isTrue = true;
+//       return isTrue;
+//     }
+//   }
+//   return isTrue;
+// }
+
+// Задача. Подсчёт свойств
+// Задание
+// Напиши функцию countProps(object), которая считает и возвращает количество
+// собственных свойств объекта в параметре object.Используй переменную propCount
+// для хранения количества свойств объекта.
+
+// Тесты
+// Объявлена функция countProps(object).
+// Вызов countProps({}) возвращает 0.
+// Вызов countProps({ name: 'Mango', age: 2 }) возвращает 2.
+// Вызов countProps{ mail: 'poly@mail.com', isOnline: true, score: 500 }) возвращает 3.
+// Функция подсчитывает только собственные свойства объекта.
+
+// function countProps(object) {
+//   let propCount = 0;
+//   for (item in object) {
+//     if (object.hasOwnProperty(item)) {
+//       propCount += 1;
+//     }
+//   }
+//   return console.log(propCount);
+// }
+
+// countProps({ name: 'Mango', age: 2 });
+
+// Задача. Коллекция значений свойства
+// Задание
+// Напиши функцию getAllPropValues(propName) которая принимает один параметр
+// propName - имя(ключ) свойства.
+// Функция должна вернуть массив всех значений свойства с таким именем
+// из каждого объекта в массиве products.
+// Если в объектах нет свойства с таким именем, функция должна вернуть пустой массив.
+
+// Тесты
+// Объявлена функция getAllPropValues(propName).
+// Вызов getAllPropValues('name') возвращает ['Радар', 'Сканер', 'Дроид', 'Захват'].
+// Вызов getAllPropValues('quantity') возвращает [4, 3, 7, 9].
+// Вызов getAllPropValues('price') возвращает [1300, 2700, 400, 1200].
+// Вызов getAllPropValues('category') возвращает [].
+
+// const products = [
+//   { name: 'Радар', price: 1300, quantity: 4 },
+//   { name: 'Сканер', price: 2700, quantity: 3 },
+//   { name: 'Дроид', price: 400, quantity: 7 },
+//   { name: 'Захват', price: 1200, quantity: 9 },
+// ];
+
+// function getAllPropValues(propName) {
+//   const propValues = [];
+
+//   // перебираем массив
+//   for (product of products) {
+//     // создаем и перебираем массив ключей объекта
+//     const keys = Object.keys(product);
+//     for (key of keys) {
+//       // пушим значения искомого ключа в отдельный массив propValues
+//       if (key === propName) {
+//         propValues.push(product[key]);
+//       }
+//     }
+//   }
+//   return propValues;
+// }
+// getAllPropValues('quantity');
+
+// Задача. Общая стоимость товара
+// Задание
+// Напиши функцию calculateTotalPrice(productName) которая принимает один
+// параметр productName - название товара.
+// Функция должна вернуть общую стоимость(цена * количество) товара с таким именем
+// из массива products.
+
+// Тесты
+// Объявлена функция calculateTotalPrice(productName).
+// Вызов calculateTotalPrice('Бластер') возвращает 0.
+// Вызов calculateTotalPrice('Радар') возвращает 5200.
+// Вызов calculateTotalPrice('Дроид') возвращает 2800.
+// Вызов calculateTotalPrice('Захват') возвращает 10800.
+// Вызов calculateTotalPrice('Сканер') возвращает 8100.
+
+// const products = [
+//   { name: 'Радар', price: 1300, quantity: 4 },
+//   { name: 'Сканер', price: 2700, quantity: 3 },
+//   { name: 'Дроид', price: 400, quantity: 7 },
+//   { name: 'Захват', price: 1200, quantity: 9 },
+// ];
+
+// function calculateTotalPrice(productName) {
+//   let totalPrice = 0;
+//   // перебираем массив объектов, деструктуризируем объекты
+//   for ({ name, price, quantity } of products) {
+//     if (name === productName) {
+//       totalPrice += price * quantity;
+//     }
+//   }
+//   return console.log(totalPrice);
+// }
+
+// calculateTotalPrice('Радар');
+
+// Задача. Карточки задач
+// Задание
+// Напиши функцию makeTask(data) которая принимает один параметр data -
+// объект со следующими свойствами.
+
+// text - текст задачи.
+// category - категория задачи.
+// priority - приоритет задачи.
+// Функция должна составить и вернуть новый объект задачи, не изменяя напрямую параметр data.
+// В новом объекте должно быть свойство completed, значение которого хранится
+// в одноимённой локальной переменной.
+
+// В параметре data гарантированно будет только свойство text, а остальные два,
+// category и priority, могут отсутствовать.
+// Тогда, в новом объекте задачи, в свойствах category и priority
+// должны быть значения по умолчанию, хранящиеся в одноимённых локальных переменных.
+
+// Тесты
+// Объявлена функция makeTask(data).
+// Вызов makeTask({}) возвращает { category: 'Общее', priority: 'Обычный', completed: false }.
+// Вызов makeTask({ category: 'Домашнее', priority: 'Низкий', text: 'Вынести мусор' }) возвращает
+// { category: 'Домашнее', priority: 'Низкий', text: 'Вынести мусор', completed: false }.
+// Вызов makeTask({ category: 'Финансы', text: 'Забрать проценты' }) возвращает
+// { category: 'Финансы', priority: 'Обычный', text: 'Забрать проценты', completed: false }.
+// Вызов makeTask({ priority: 'Низкий', text: 'Выбрать шампунь' }) возвращает
+// { category: 'Общее', priority: 'Низкий', text: 'Выбрать шампунь', completed: false }.
+// Вызов makeTask({ text: 'Купить хлеб' }) возвращает
+// { category: 'Общее', priority: 'Обычный', text: 'Купить хлеб', completed: false }.
+
+// function makeTask(data) {
+//   const completed = false;
+//   const category = 'Общее';
+//   const priority = 'Обычный';
+//   // Пиши код ниже этой строки
+//   const taskData = { category, priority, ...data, completed };
+//   return console.log(taskData);
+//   // Пиши код выше этой строки
+// }
+// makeTask({});
+// makeTask({ category: 'Домашнее', priority: 'Низкий', text: 'Вынести мусор' });
+// makeTask({ category: 'Финансы', text: 'Забрать проценты' });
+// makeTask({ priority: 'Низкий', text: 'Выбрать шампунь' });
+// makeTask({ text: 'Купить хлеб' });
+
+// Задача. Массив совпадений
+// Задание
+// Функция findMatches() принимает произвольное количество аргументов.
+// Первым аргументом всегда будет массив чисел, а остальные аргументы будут просто числами.
+
+// Дополни код функции так, чтобы она возвращала новый массив matches,
+// в котором будут только те аргументы, начиная со второго,
+// которые есть в массиве первого аргумента.
+
+// Например, findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) должна вернуть массив[1, 2],
+// потому что только они есть в массиве первого аргумента.
+
+// Тесты
+// Объявлена функция findMatches().
+// Вызов findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) возвращает [1, 2].
+// Вызов findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2) возвращает [17, 89, 2].
+// Вызов findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41) возвращает [24, 9, 41].
+// Вызов findMatches([63, 11, 8, 29], 4, 7, 16) возвращает [].
+
+// Пиши код ниже этой строки
+// function findMatches(sourceArgsArray, ...argsToCompare) {
+//   const matches = []; // Не изменяй эту строку
+//   for (arg of argsToCompare) {
+//     if (sourceArgsArray.includes(arg)) {
+//       matches.push(arg);
+//     }
+//   }
+//   // Пиши код выше этой строки
+//   return console.log(matches);
+// }
+// findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7);
+// findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2);
+
+// const atTheOldToad = {
+//   potions: [
+//     { name: 'Зелье скорости', price: 460 },
+//     { name: 'Дыхание дракона', price: 780 },
+//     { name: 'Каменная кожа', price: 520 },
+//   ],
+//   updatePotionName(oldName, newName) {
+//     for (potion of this.potions) {
+//       if (potion.name === oldName) {
+//         potion.name = newName;
+//         return;
+//       }
+//     }
+//     return `Зелья ${oldName} нет в инвентаре!`;
+//   },
+//   removePotion(potionName) {
+//     for (potion of this.potions) {
+//       if (potion.name === potionName) {
+//         this.potions.splice(this.potions.indexOf(potion), 1);
+//         return;
+//       }
+//     }
+//     return `Зелья ${potionName} нет в инвентаре!`;
+//   },
+// };
+// atTheOldToad.removePotion('Дыхание дракона');
+// console.log(atTheOldToad.potions);
+
+// Пример1
+// Напишите две функции:
+// letMeSeeYourName(callback) - спрашивает имя пользователя через prompt и
+// вызывает коллбек ф - цию callback
+// greet(name) - коллбек принимающий имя и логирующий в консоль строку "Привет" + name
+
+// const greet = function (name) {
+//   console.log('Привет, ' + name);
+// };
+// const letMeSeeYourName = function (callback) {
+//   let userName = prompt('Input name', 'John Connor');
+//   if (userName) {
+//     callback(userName);
+//   }
+// };
+// letMeSeeYourName(greet);
+
+// Пример2:
+// Напишите две функции:
+// makeProduct(name, price, callback) - принимает имя и цену товара, а также колбек.
+// Функция создаёт обьект товара, добавляя ему уникальный идентификатор в свойство
+// id и вызывает колбек передавая ему созданный обьект.
+// showProduct(product) - коллбек принимающий обьект продукта и логирующий его в консоль
+
+// const makeProduct = function (name, price, callback) {
+//   let itemId = 0;
+//   const item = {
+//     id: (itemId = +1),
+//     name,
+//     price,
+//   };
+
+//   callback(item);
+// };
+
+// const showProduct = function (product) {
+//   console.log(product);
+// };
+
+// makeProduct('Apple', 23, showProduct);
+// makeProduct('Banana', 100, showProduct);
+
+// Пример 3:
+// Выполните рефакторинг функции makeDishWithShef(shefName, dish) так,
+// чтобы не нужно было каждый раз передавать имя шефа.Напишите функцию makeShef(shefName),
+// которая возвращает другую функцию makeDish(dish), помнящую имя шефа при её вызове.
+
+// function makeDishWithShef(shefName, dish) {
+//   console.log(`Шеф ${shefName} готовит ${dish}`);
+// }
+// makeDishWithShef('Поли', 'пирожок');
+// makeDishWithShef('Поли', 'чай');
+// makeDishWithShef('Манго', 'тортик');
+// makeDishWithShef('Манго', 'кофе');
+
+// const makeShef = function (shefName) {
+//   return function makeDish(dish) {
+//     console.log(`Шеф ${shefName} готовит ${dish}`);
+//   };
+// };
+
+// makeShef('Манго')('чай');
+
+// const mango = makeShef('Манго');
+// const poly = makeShef('Поли');
+
+// poly('пирожок');
+// poly('чай');
+// mango('тортик');
+// mango('кофе');
+
+// Задание
+// Необходимо написать логику обработки заказа пиццы.
+// Выполни рефакторинг метода order так, чтобы он принимал вторым и третим параметрами два
+// колбэка onSuccess и onError.
+
+// Если в свойстве pizzas нет пиццы с названием из параметра pizzaName,
+// метод order должен возвращать результат вызова колбэка onError,
+// передавая ему аргументом строку 'В ассортименте нет пиццы с названием <имя пиццы>.'
+// Если в свойстве pizzas есть пицца с названием из параметра pizzaName,
+// метод order должен возвращать результат вызова колбэка onSuccess,
+// передавая ему аргументом имя заказанной пиццы.
+// После объявления объекта pizzaPalace мы добавили колбэки и вызовы методов.
+// Пожалуйста ничего там не меняй.
+
+// const pizzaPalace = {
+//   pizzas: ['Ультрасыр', 'Аль Копчино', 'Четыре нарезона'],
+//   order(pizzaName, onSuccess, onError) {
+//     for (pizza of this.pizzas) {
+//       if (pizza === pizzaName) {
+//         return onSuccess(pizzaName);
+//       }
+//     }
+//     return onError(pizzaName);
+//   },
+// };
+
+// // Пиши код выше этой строки
+
+// // Колбэк для onSuccess
+// function makePizza(pizzaName) {
+//   return console.log(`Ваш заказ принят. Готовим пиццу ${pizzaName}.`);
+// }
+
+// // Колбэк для onError
+// function onOrderError(error) {
+//   return console.log(`Ошибка! В ассортименте нет пиццы с названием ${error}`);
+// }
+
+// // Вызовы метода с колбэками
+// pizzaPalace.order('Аль Копчино', makePizza, onOrderError);
+// pizzaPalace.order('Четыре нарезона', makePizza, onOrderError);
+// pizzaPalace.order('Биг майк', makePizza, onOrderError);
+// pizzaPalace.order('Венская', makePizza, onOrderError);
